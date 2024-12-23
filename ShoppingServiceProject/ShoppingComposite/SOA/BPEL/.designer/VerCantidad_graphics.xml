@@ -6,7 +6,7 @@
    <partnerlink_locations>
       <partnerlink name="vercantidad_client" x="3" y="286" side="left"/>
    </partnerlink_locations>
-   <graph_layout viewport="0,75,674,426" show_swimlanes="true">
+   <graph_layout viewport="0,0,1048,486" show_swimlanes="true">
       <layout_item collapsed="false" xpath="/process" type="process" showhandlers="true"/>
       <layout_item collapsed="false" xpath="/process/sequence" type="sequence"/>
    </graph_layout>

@@ -70,7 +70,7 @@
     <!-- Receive input from requestor. (Note: This maps to operation defined in Comprador.wsdl) -->
     <receive name="receiveInput" partnerLink="comprador_client" portType="client:Comprador" operation="process" variable="inputVariable" createInstance="yes"/>
     <if name="If1">
-      <condition>$inputVariable.payload/client:ofrecido  &lt; $inputVariable.payload/client:precio_orig</condition>
+      <condition>number($inputVariable.payload/client:ofrecido) &lt; number($inputVariable.payload/client:precio_orig) * 0.7</condition>
       <assign name="Assign1">
         <copy>
           <from>true()</from>

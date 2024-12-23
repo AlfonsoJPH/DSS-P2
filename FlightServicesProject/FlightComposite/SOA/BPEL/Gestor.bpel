@@ -139,7 +139,7 @@
       <documentation>
         <![CDATA[Iberia]]>
       </documentation>
-      <condition>$Invoke2_process_OUT_Iberia.payload/ns2:precio &lt; $Invoke3_process_OUT_Vueling.payload/ns3:precio</condition>
+      <condition>number($Invoke2_process_OUT_Iberia.payload/ns2:precio) &lt; number($Invoke3_process_OUT_Vueling.payload/ns3:precio)</condition>
       <assign name="Assign4">
         <copy>
           <from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Invoke2_process_OUT_Iberia.payload/ns2:precio</from>

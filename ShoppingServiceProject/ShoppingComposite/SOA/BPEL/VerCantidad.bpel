@@ -73,7 +73,7 @@
       <documentation>
         <![CDATA[CAMISA || TRAJE || ZAPATOS]]>
       </documentation>
-      <condition>xp20:matches($inputVariable.payload/client:nombre, "CAMISA") or xp20:matches($inputVariable.payload/client:nombre, "TRAJE") or xp20:matches($inputVariable.payload/client:nombre, "ZAPATOS") </condition>
+      <condition>(xp20:upper-case($inputVariable.payload/client:nombre) = "CAMISA" ) or (xp20:upper-case($inputVariable.payload/client:nombre) =  "TRAJE") or (xp20:upper-case($inputVariable.payload/client:nombre) =  "ZAPATOS")</condition>
       <assign name="Assign1">
         <copy>
           <from>true()</from>

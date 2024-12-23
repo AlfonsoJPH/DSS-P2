@@ -6,10 +6,10 @@
    <partnerlink_locations>
       <partnerlink name="gestor_client" x="15" y="574" side="left"/>
       <partnerlink name="iberia_client" x="15" y="476" side="left"/>
-      <partnerlink name="empleado_client" x="491" y="284" side="right"/>
-      <partnerlink name="vueling_client" x="491" y="668" side="right"/>
+      <partnerlink name="empleado_client" x="926" y="284" side="right"/>
+      <partnerlink name="vueling_client" x="926" y="668" side="right"/>
    </partnerlink_locations>
-   <graph_layout viewport="20,51,592,735" show_swimlanes="true">
+   <graph_layout viewport="0,646,1048,486" show_swimlanes="true">
       <layout_item collapsed="false" xpath="/process" type="process" showhandlers="true"/>
       <layout_item collapsed="false" xpath="/process/sequence" type="sequence"/>
    </graph_layout>

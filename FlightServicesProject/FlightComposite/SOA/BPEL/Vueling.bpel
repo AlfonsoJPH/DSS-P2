@@ -69,70 +69,78 @@
 
     <!-- Receive input from requestor. (Note: This maps to operation defined in Vueling.wsdl) -->
     <receive name="receiveInput" partnerLink="vueling_client" portType="client:Vueling" operation="process" variable="inputVariable" createInstance="yes"/>
-    <assign name="Assign1">
-      <copy>
-        <from>50</from>
-        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:precio</to>
-      </copy>
-    </assign>
-    <if name="If_Tipo_Empleado">
-      <documentation>
-        <![CDATA[Primera Clase]]>
-      </documentation>
-      <condition>xp20:compare($inputVariable.payload/client:tipo_empleado, 'Primera clase' ) = 1</condition>
-      <assign name="PriceX15">
-        <copy>
-          <from>15</from>
-          <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:precio</to>
-        </copy>
-      </assign>
-      <else>
-        <documentation>
-          <![CDATA[Turista]]>
-        </documentation>
-        <assign name="PriceX10">
+    <if name="If3">
+      <condition>$inputVariable.payload/client:fecha_ida &lt; $inputVariable.payload/client:fecha_vuelta</condition>
+      <sequence>
+        <assign name="Assign1">
           <copy>
-            <from>10</from>
+            <from>50</from>
             <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:precio</to>
           </copy>
         </assign>
-      </else>
-    </if>
-    <if name="If_Tipo_Aeropuerto">
-      <documentation>
-        <![CDATA[AMS]]>
-      </documentation>
-      <condition> xp20:upper-case($inputVariable.payload/client:tipo_aeropuerto) = "AMS"</condition>
-      <assign name="PriceX5">
-        <copy>
-          <from>$outputVariable.payload/client:precio * 5</from>
-          <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:precio</to>
-        </copy>
-      </assign>
-      <else>
-        <if name="If2">
+        <if name="If_Tipo_Empleado">
           <documentation>
-            <![CDATA[FCO]]>
+            <![CDATA[Primera Clase]]>
           </documentation>
-          <condition>xp20:matches(xp20:upper-case($inputVariable.payload/client:tipo_aeropuerto), "FCO")</condition>
-          <assign name="PriceX10">
+          <condition>$inputVariable.payload/client:tipo_empleado  =  "Primera clase"</condition>
+          <assign name="PriceX15">
             <copy>
-              <from>$outputVariable.payload/client:precio * 10</from>
+              <from>15</from>
               <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:precio</to>
             </copy>
           </assign>
           <else>
             <documentation>
-              <![CDATA[Cualquiera]]>
+              <![CDATA[Turista]]>
             </documentation>
-            <assign name="PriceX15">
+            <assign name="PriceX10">
               <copy>
-                <from>$outputVariable.payload/client:precio * 15</from>
+                <from>10</from>
                 <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:precio</to>
               </copy>
             </assign>
           </else>
         </if>
+        <if name="If_Tipo_Aeropuerto">
+          <documentation>
+            <![CDATA[AMS]]>
+          </documentation>
+          <condition>xp20:upper-case($inputVariable.payload/client:tipo_aeropuerto) = "AMS"</condition>
+          <assign name="PriceX5">
+            <copy>
+              <from>$outputVariable.payload/client:precio * 5</from>
+              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:precio</to>
+            </copy>
+          </assign>
+          <else>
+            <if name="If2">
+              <documentation>
+                <![CDATA[FCO]]>
+              </documentation>
+              <condition>xp20:upper-case($inputVariable.payload/client:tipo_aeropuerto) = "FCO"</condition>
+              <assign name="PriceX10">
+                <copy>
+                  <from>$outputVariable.payload/client:precio * 10</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:precio</to>
+                </copy>
+              </assign>
+              <else>
+                <documentation>
+                  <![CDATA[Cualquiera]]>
+                </documentation>
+                <assign name="PriceX15">
+                  <copy>
+                    <from>$outputVariable.payload/client:precio * 15</from>
+                    <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:precio</to>
+                  </copy>
+                </assign>
+              </else>
+            </if>
+          </else>
+        </if>
+      </sequence>
+      <else>
+        <throw name="Throw1" faultName="bpelx:assertFailure"/>
       </else>
     </if>
     <!-- Generate reply to synchronous request -->

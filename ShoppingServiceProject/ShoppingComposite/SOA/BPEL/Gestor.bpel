@@ -98,12 +98,16 @@
       <documentation>
         <![CDATA[Hay Existencias]]>
       </documentation>
-      <condition>$Invoke1_process_OUT_VerCantidad.payload/ns1:existencia  = true()</condition>
+      <condition>boolean($Invoke1_process_OUT_VerCantidad.payload/ns1:existencia) = true()</condition>
       <sequence name="Sequence1">
         <assign name="Assign2">
           <copy>
             <from>$Invoke1_process_OUT_VerCantidad.payload/ns1:cantidad</from>
             <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Invoke2_process_IN_Comprador.payload/ns2:precio_orig</to>
+          </copy>
+          <copy>
+            <from>false()</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Invoke2_process_OUT_Comprador.payload/ns2:aceptable</to>
           </copy>
           <copy>
             <from>$Invoke1_process_OUT_VerCantidad.payload/ns1:cantidad</from>
@@ -115,7 +119,7 @@
           </copy>
         </assign>
         <while name="While1">
-          <condition>not($Invoke2_process_OUT_Comprador.payload/ns2:aceptable)</condition>
+          <condition>$Invoke2_process_OUT_Comprador.payload/ns2:aceptable   =  "false"</condition>
           <sequence name="Sequence2">
             <invoke name="Invoke2" bpelx:invokeAsDetail="no" partnerLink="comprador_client" portType="ns2:Comprador"
                     operation="process" inputVariable="Invoke2_process_IN_Comprador"
@@ -124,11 +128,15 @@
               <documentation>
                 <![CDATA[Oferta aceptada]]>
               </documentation>
-              <condition>$Invoke2_process_OUT_Comprador.payload/ns2:aceptable  = true()</condition>
+              <condition>$Invoke2_process_OUT_Comprador.payload/ns2:aceptable = "true"</condition>
               <assign name="Compra">
                 <copy>
                   <from>$Invoke3_process_OUT_Vendedor.payload/ns3:oferta_vendedor</from>
                   <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:precio_end</to>
+                </copy>
+                <copy>
+                  <from>true()</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Invoke2_process_OUT_Comprador.payload/ns2:aceptable</to>
                 </copy>
                 <copy>
                   <from>"Vendido"</from>
@@ -169,6 +177,14 @@
           <copy>
             <from>"No quedan existencias"</from>
             <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:mensaje</to>
+          </copy>
+          <copy>
+            <from>0</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:precio_ini</to>
+          </copy>
+          <copy>
+            <from>0</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:precio_end</to>
           </copy>
         </assign>
       </else>

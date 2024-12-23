@@ -71,7 +71,7 @@
     <receive name="receiveInput" partnerLink="vendedor_client" portType="client:Vendedor" operation="process" variable="inputVariable" createInstance="yes"/>
     <assign name="Assign1">
       <copy>
-        <from>$inputVariable.payload/client:oferta_comprador *  0.1</from>
+        <from>$inputVariable.payload/client:oferta_comprador *  0.9</from>
         <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:oferta_vendedor</to>
       </copy>
     </assign>

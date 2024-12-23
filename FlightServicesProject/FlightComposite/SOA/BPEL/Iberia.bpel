@@ -76,7 +76,7 @@
           <documentation>
             <![CDATA[Primera Clase]]>
           </documentation>
-          <condition>xp20:compare($inputVariable.payload/client:tipo_empleado, "Primera clase" ) = 1</condition>
+          <condition>$inputVariable.payload/client:tipo_empleado  = "Primera clase"</condition>
           <assign name="PriceX25">
             <copy>
               <from>25</from>
@@ -111,7 +111,7 @@
               <documentation>
                 <![CDATA[FCO]]>
               </documentation>
-              <condition>xp20:matches(xp20:upper-case($inputVariable.payload/client:tipo_aeropuerto), "FCO")</condition>
+              <condition>xp20:upper-case($inputVariable.payload/client:tipo_aeropuerto) = "FCO"</condition>
               <assign name="PriceX15">
                 <copy>
                   <from>$outputVariable.payload/client:precio * 15</from>
