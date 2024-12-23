@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified"
+	targetNamespace="http://xmlns.oracle.com/FlightServicesProject/FlightComposite/Empleado"
+	xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="EmpleadoRequestMessage">
+		<complexType>
+			<sequence>
+				<element name="nombre" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="EmpleadoResponseMessage">
+		<complexType>
+			<sequence>
+				<element name="tipo_empleado" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

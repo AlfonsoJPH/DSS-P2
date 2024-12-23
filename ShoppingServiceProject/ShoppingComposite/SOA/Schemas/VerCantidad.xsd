@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified"
+	targetNamespace="http://xmlns.oracle.com/ShoppingServiceProject/ShoppingComposite/VerCantidad"
+	xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="VerCantidadRequestMessage">
+		<complexType>
+			<sequence>
+				<element name="nombre" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="VerCantidadResponseMessage">
+		<complexType>
+			<sequence>
+    <element name="cantidad" type="float"/>
+    <element name="existencia" type="boolean"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

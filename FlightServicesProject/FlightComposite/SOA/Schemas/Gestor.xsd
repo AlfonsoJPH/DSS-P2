@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified"
+	targetNamespace="http://xmlns.oracle.com/FlightServicesProject/FlightComposite/Gestor"
+	xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="GestorRequestMessage">
+  <complexType>
+   <sequence>
+    <element name="nombre" type="string"/>
+    <element name="fecha_ida" type="dateTime"/>
+    <element name="fecha_vuelta" type="dateTime"/>
+    <element name="tipo_aeropuerto" type="string"/>
+   </sequence>
+  </complexType>
+ </element>
+	<element name="GestorResponseMessage">
+		<complexType>
+			<sequence>
+				<element name="tipo_aerolinea" type="string"/>
+    <element name="precio" type="float"/>
+   </sequence>
+		</complexType>
+	</element>
+</schema>                                                                                                                                                                                               

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified"
+	targetNamespace="http://xmlns.oracle.com/FlightServicesProject/FlightComposite/Vueling"
+	xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="FlightRequestMessage">
+  <complexType>
+   <sequence>
+    <element name="fecha_ida" type="dateTime"/>
+    <element name="fecha_vuelta" type="dateTime"/>
+    <element name="tipo_empleado" type="string"/>
+    <element name="tipo_aeropuerto" type="string"/>
+   </sequence>
+  </complexType>
+ </element>
+	<element name="PriceResponseMessage">
+  <complexType>
+   <sequence>
+    <element name="precio" type="float"/>
+    <element name="error" type="string"/>
+   </sequence>
+  </complexType>
+ </element>
+</schema>

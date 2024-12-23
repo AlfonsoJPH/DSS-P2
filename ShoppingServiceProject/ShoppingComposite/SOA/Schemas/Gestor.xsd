@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified"
+	targetNamespace="http://xmlns.oracle.com/ShoppingServiceProject/ShoppingComposite/Gestor"
+	xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="GestorRequestMessage">
+		<complexType>
+			<sequence>
+				<element name="nombre_producto" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GestorResponseMessage">
+		<complexType>
+			<sequence>
+				<element name="nombre_producto" type="string"/>
+    <element name="precio_ini" type="float"/>
+    <element name="precio_end" type="float"/>
+    <element name="mensaje" type="string"/>
+   </sequence>
+		</complexType>
+	</element>
+</schema>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified"
+	targetNamespace="http://xmlns.oracle.com/ShoppingServiceProject/ShoppingComposite/Comprador"
+	xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="CompradorRequestMessage">
+		<complexType>
+			<sequence>
+				<element name="precio_orig" type="float"/>
+    <element name="ofrecido" type="float"/>
+   </sequence>
+		</complexType>
+	</element>
+	<element name="CompradorResponseMessage">
+		<complexType>
+			<sequence>
+				<element name="aceptable" type="boolean"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>
